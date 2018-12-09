@@ -1,0 +1,18 @@
+public static void versenke(double[] a, int i, int m) {
+int k = i;
+while (k <= (m / 2) - 1) { //mindestens ein Kind existiert
+int kindLinks = 2 * k + 1;
+int kindRechts = kindLinks + 1;
+//bestimme Kind mit größtem Wert
+int maxKind = kindLinks;
+// bestimme ob ein rechtes Kind existiert und einen größeren Wert hat
+if (kindRechts <= m - 1 && a[kindLinks] < a[kindRechts]) {
+maxKind = kindRechts;
+}
+// prüfe, ob Element sinken muss
+if (a[k] < a[maxKind]) {
+vertausche(a, k, maxKind); // Element eine Stufe sinken lassen
+k = maxKind; // wiederhole den Vorgang mit der neuen Position
+} else
+break; // fertig, Element muss nicht weiter sinken
+} }
